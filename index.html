@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Допоможімо відновити дім після пожежі</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Збір коштів на відновлення даху та стін будинку, знищеного нічною пожежею. Допоможімо захистити дім до Різдва."
+  />
+
+  <!-- Шрифт (за бажанням можна відключити) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-main: #f7f1ea;
+      --text-main: #1b2e45;
+      --text-muted: #59616a;
+      --accent: #c45a4a;
+      --accent-soft: #d6dcc6;
+      --accent-dark: #8b5e3c;
+      --card-bg: #ffffff;
+      --border-soft: #e1d7cc;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.08);
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 18px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .logo-bar {
+      width: 100%;
+      max-width: var(--max-width);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-text {
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .tag-pill {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(196, 90, 74, 0.08);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 10px 16px 40px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    /* HERO / LEFT COLUMN */
+
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      padding: 26px 24px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 2px;
+    }
+
+    .hero-title {
+      font-size: 26px;
+      line-height: 1.25;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    .hero-media {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      background: #111;
+      max-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-media-placeholder {
+      padding: 40px 20px;
+      color: #f0f0f0;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+
+    .hero-badge {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: var(--bg-main);
+      border: 1px solid var(--border-soft);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hero-badge-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .hero-badge-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .section {
+      margin-top: 22px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(25, 32, 45, 0.06);
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .section-text {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .section-text p {
+      margin: 0 0 10px;
+    }
+
+    /* RIGHT COLUMN – DONATE PANEL */
+
+    .side-card {
+      position: sticky;
+      top: 18px;
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      padding: 20px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border: 1px solid rgba(27, 46, 69, 0.05);
+    }
+
+    .side-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .side-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .progress-wrap {
+      margin-top: 6px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(27, 46, 69, 0.08);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 35%; /* ← Якщо треба, змінюй на реальний прогрес */
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
+    .progress-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .progress-caption strong {
+      color: var(--text-main);
+    }
+
+    .amount-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .amount-row span strong {
+      color: var(--text-main);
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(196, 90, 74, 0.35);
+      transition: transform 0.06s ease, box-shadow 0.06s ease,
+        background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(196, 90, 74, 0.45);
+      background: #b44f41;
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 20px rgba(196, 90, 74, 0.3);
+    }
+
+    .btn-secondary {
+      margin-top: 2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-main);
+      font-weight: 500;
+      font-size: 13px;
+      border: 1px solid rgba(27, 46, 69, 0.16);
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(215, 220, 198, 0.35);
+      border-color: rgba(27, 46, 69, 0.24);
+    }
+
+    .side-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .side-note strong {
+      color: var(--accent-dark);
+    }
+
+    .check-list {
+      margin: 4px 0 0;
+      padding: 0;
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .check-list li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .check-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      margin-top: 6px;
+      background: var(--accent-soft);
+      flex-shrink: 0;
+    }
+
+    footer {
+      padding: 18px 16px 28px;
+      display: flex;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      width: 100%;
+      max-width: var(--max-width);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(25, 32, 45, 0.08);
+      padding-top: 12px;
+    }
+
+    @media (max-width: 880px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .side-card {
+        position: static;
+      }
+
+      header {
+        padding: 14px 16px 6px;
+      }
+
+      .hero-card {
+        padding: 20px 16px 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 22px;
+      }
+
+      .hero-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .logo-text {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="logo-bar">
+        <div class="logo-text">Благодійна ініціатива</div>
+        <div class="tag-pill">
+          <span class="tag-dot"></span>
+          Збір на відновлення дому
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="layout">
+          <!-- LEFT COLUMN -->
+          <section class="hero-card">
+            <div class="hero-header">
+              <h1 class="hero-title">
+                Допоможімо відновити дім, знищений нічною пожежею
+              </h1>
+              <p class="hero-subtitle">
+                Мета — до Різдва відновити дах і стіни другого поверху, щоб
+                захистити оселю від дощу та снігу й зберегти те, що вдалося
+                врятувати.
+              </p>
+            </div>
+
+            <!-- HERO IMAGE -->
+            <div class="hero-media">
+              <!-- ЗАМІНИ src НА СВОЄ ФОТО ЗГОРІВШОГО ДОМУ -->
+              <img
+                src="C:\Users\Admin\Downloads\зображення_viber_2025-11-17_21-04-08-355.jpg"
+                alt="Згорілий другий поверх будинку без даху"
+                onerror="this.style.display='none'; this.parentElement.querySelector('.hero-media-placeholder').style.display='block';"
+              />
+              <div class="hero-media-placeholder" style="display:none;">
+                Тут буде фото згорілого дому (заміни
+                <code>photo-burned-house-main.jpg</code> на реальний файл).
+              </div>
+            </div>
+
+            <!-- QUICK FACTS -->
+            <div class="hero-grid">
+              <div class="hero-badge">
+                <div class="hero-badge-label">Мета збору</div>
+                <div class="hero-badge-value">20 000 $</div>
+                <div>на дах і стіни 2-го поверху</div>
+              </div>
+              <div class="hero-badge">
+                <div class="hero-badge-label">Дедлайн</div>
+                <div class="hero-badge-value">до Різдва</div>
+                <div>щоб зупинити руйнацію</div>
+              </div>
+              <div class="hero-badge">
+                <div class="hero-badge-label">Формат</div>
+                <div class="hero-badge-value">Краудфандинг</div>
+                <div>спільними зусиллями громади</div>
+              </div>
+            </div>
+
+ <a class="btn-primary"
+   href="https://send.monobank.ua/jar/82LGanHexU"
+   target="_blank"
+   rel="noopener noreferrer">
+  Підтримати зараз
+</a>
+ 
+            <!-- SECTION: SHORT STORY -->
+            <section class="section" id="story">
+              <h2 class="section-title">Ніч, яка забрала дах і другий поверх</h2>
+              <div class="section-text">
+                <p>
+                  Пожежа сталася близько першої години ночі. Родина Людмили
+                  спала, як і молода сім’я з немовлям, яка гостювала в них тієї
+                  ночі. Вогонь дуже швидко охопив другий поверх і дах.
+                </p>
+                <p>
+                  Людмила ледь встигла розбудити чоловіка та гостей. Усі
+                  вибігли надвір за кілька хвилин — у тому, в чому були. Пожежні
+                  приїхали оперативно, але полум’я встигло знищити весь другий
+                  поверх і дах будинку.
+                </p>
+                <p>
+                  Тепер дім стоїть без даху, відкритий до дощу й снігу. Якщо не
+                  відновити покрівлю та стіни найближчим часом, негода може
+                  остаточно зруйнувати те, що вціліло після пожежі.
+                </p>
+              </div>
+            </section>
+
+            <!-- SECTION: WHY NOW -->
+            <section class="section" id="why-now">
+              <h2 class="section-title">Чому важливо діяти саме зараз</h2>
+              <div class="section-text">
+                <p>
+                  Зима вже близько. Кожен день без даху робить будинок ще більш
+                  вразливим: волога, сніг і вітер руйнують конструкції, які
+                  вдалося зберегти. Зараз критично важливо накрити оселю
+                  покрівлею і добудувати стіни, щоб зупинити подальшу руйнацію.
+                </p>
+                <p>
+                  Внутрішні роботи родина планує робити пізніше, після Різдва.
+                  Перший, найважливіший крок — захистити дім ззовні, аби він
+                  узагалі мав шанс на відновлення.
+                </p>
+              </div>
+            </section>
+
+            <!-- SECTION: GOAL -->
+            <section class="section" id="goal">
+              <h2 class="section-title">Мета цього збору</h2>
+              <div class="section-text">
+                <p>Наш пріоритет — зовнішній захист будинку до Різдва:</p>
+                <ul>
+                  <li>звести нові стіни другого поверху;</li>
+                  <li>встановити міцну покрівлю замість згорілої;</li>
+                  <li>захистити оселю від дощу, снігу й вітру;</li>
+                  <li>зберегти те, що вдалося врятувати після пожежі.</li>
+                </ul>
+                <p>
+                  Для цього потрібна сума в <strong>20 000 доларів США</strong>.
+                  Для однієї родини це непідйомно, але для великої кількості
+                  людей — цілком реальна мета.
+                </p>
+              </div>
+            </section>
+
+            <!-- SECTION: GALLERY HINT -->
+            <section class="section" id="gallery">
+              <h2 class="section-title">Як виглядає дім зараз</h2>
+              <div class="section-text">
+                <p>
+                  На фото нижче — наслідки пожежі: зруйнований другий поверх,
+                  обгорілі балки, відсутній дах. Ми ділимося цими знімками не
+                  для шоку, а для чесності та прозорості.
+                </p>
+                <div class="gallery">
+    <!-- ФОТО 1 -->
+    <div class="gallery-item">
+      <img src="C:\Users\Admin\Downloads\зображення_viber_2025-11-17_21-05-17-121.jpg" alt="Згорілий дах та другий поверх будинку" />
+    </div>
+
+    <!-- ФОТО 2 -->
+    <div class="gallery-item">
+      <img src="C:\Users\Admin\Downloads\зображення_viber_2025-11-17_21-05-45-778.jpg" alt="Обгорілий 2й поверх після пожежі" />
+    </div>
+
+    <!-- ФОТО 3 -->
+    <div class="gallery-item">
+      <img src="C:\Users\Admin\Downloads\зображення_viber_2025-11-17_21-04-42-692.jpg" alt="Пошкоджені стіни другого поверху" />
+    </div>
+
+
+
+            <!-- SECTION: WHO ORGANIZES -->
+            <section class="section" id="trust">
+              <h2 class="section-title">Хто організовує збір</h2>
+              <div class="section-text">
+                <p>
+                  Збір організовує <strong>Благодійна організація "Фундація добрих справ"</strong> —
+                  ми допомагаємо родині координувати ремонт і прозоро
+                  використовувати зібрані кошти.
+                </p>
+                <p>
+                  Всі витрати на матеріали й роботи будуть задокументовані, а
+                  звіти про використання коштів ми публікуватимемо
+                  <strong> за етапами</strong>.
+                </p>
+              </div>
+            </section>
+          </section>
+
+         <div class="progress-wrap">
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="progress-caption">
+    <span>Вже зібрано: <strong id="raisedAmount"></strong></span>
+    <span>Мета: <strong id="goalAmount"></strong></span>
+  </div>
+  <div class="amount-row">
+    <span>Підтримало: <strong>●●● людей</strong></span>
+    <span>Залишилось: <strong id="remainingAmount"></strong></span>
+  </div>
+</div>
+<script>
+  // 🔢 ТУТ ТИ ОНОВЛЮЄШ ЛИШЕ ЦІ ДВІ ЦИФРИ
+  const goal = 20000;      // загальна мета, $
+  const raised = 100;     // вже зібрано, $
+
+  // Форматування суми (додає пробіли як роздільники тисяч)
+  function formatMoney(amount) {
+    return amount.toLocaleString('uk-UA') + ' $';
+  }
+
+  // Розрахунок відсотка
+  const percent = Math.max(0, Math.min(raised / goal, 1)) * 100;
+
+  // Оновлюємо текст на сторінці
+  document.getElementById('raisedAmount').textContent = formatMoney(raised);
+  document.getElementById('goalAmount').textContent = formatMoney(goal);
+  document.getElementById('remainingAmount').textContent = formatMoney(goal - raised);
+
+  // Оновлюємо ширину прогрес-бара
+  const progressFill = document.getElementById('progressFill');
+  if (progressFill) {
+    progressFill.style.width = percent + '%';
+  }
+</script>
+
+
+            <!-- ЗАМІНИ href НА ПОСИЛАННЯ ПЛАТФОРМИ / БАНКИ -->
+            <a class="btn-primary"
+   href="https://send.monobank.ua/jar/82LGanHexU"
+   target="_blank"
+   rel="noopener noreferrer">
+  Підтримати зараз
+</a>
+
+
+            <!-- КНОПКА ПОДІЛИТИСЯ -->
+            <button
+              class="btn-secondary"
+              type="button"
+              onclick="copyPageLink()">
+              Поділитися сторінкою збору
+            </button>
+
+            <div class="side-note">
+              <strong>На що підуть кошти:</strong>
+              <ul class="check-list">
+                <li>
+                  <span class="check-dot"></span>
+                  <span>Купівля матеріалів для стін та покрівлі 2-го поверху</span>
+                </li>
+                <li>
+                  <span class="check-dot"></span>
+                  <span>Оплата робіт зі зведення стін і монтажу даху</span>
+                </li>
+                <li>
+                  <span class="check-dot"></span>
+                  <span>Захист будинку від дощу, снігу та подальшої руйнації</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="side-note">
+              Якщо не можете задонатити, підтримайте, будь ласка, поширенням
+              цього збору серед друзів, у чатах та соцмережах 🙌
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© 2025 [БО "Фундація добрих справ"] — збір на відновлення дому після пожежі.</div>
+        <div>Контакти: [bo.dsprav@gmail.com / телефон / соцмережі]</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- СКРИПТ ДЛЯ ЛІЧИЛЬНИКА ТА КНОПКИ "ПОДІЛИТИСЯ" -->
+  <script>
+    // 🔢 Тут змінюєш тільки ці дві цифри
+    const goal = 20000;   // загальна мета, $
+    const raised = 100;  // вже зібрано, $
+
+    function formatMoney(amount) {
+      return amount.toLocaleString('uk-UA') + ' $';
+    }
+
+    // оновлюємо числа
+    (function updateCounter() {
+      const percent = Math.max(0, Math.min(raised / goal, 1)) * 100;
+
+      const raisedEl = document.getElementById('raisedAmount');
+      const goalEl = document.getElementById('goalAmount');
+      const remainingEl = document.getElementById('remainingAmount');
+      const progressFill = document.getElementById('progressFill');
+
+      if (raisedEl) raisedEl.textContent = formatMoney(raised);
+      if (goalEl) goalEl.textContent = formatMoney(goal);
+      if (remainingEl) remainingEl.textContent = formatMoney(goal - raised);
+      if (progressFill) {
+        progressFill.style.width = percent + '%';
+      }
+    })();
+
+    // копіювання посилання на сторінку збору
+    function copyPageLink() {
+      const url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          alert('Посилання на сторінку збору скопійовано.');
+        }, function () {
+          alert('Не вдалося автоматично скопіювати. Скопіюйте вручну: ' + url);
+        });
+      } else {
+        alert('Скопіюйте це посилання: ' + url);
+      }
+    }
+  </script>
+</body>
+</html>
